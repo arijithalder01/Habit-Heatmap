@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Habit Heatmap</title>
+<meta name="description" content="A GitHub-style contribution heatmap for tracking any personal habit, stored locally in your browser." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <h1>Habit Heatmap</h1>
+    </div>
+    <button id="exportBtn" class="btn btn-ghost" title="Export current heatmap as PNG">Export PNG</button>
+  </header>
+
+  <section class="habit-bar">
+    <div id="habitTabs" class="habit-tabs"></div>
+    <button id="addHabitBtn" class="btn btn-add" title="Add a new habit">+ New habit</button>
+  </section>
+
+  <section class="stats" id="stats">
+    <div class="stat"><span class="stat-value" id="statCurrent">0</span><span class="stat-label">current streak</span></div>
+    <div class="stat"><span class="stat-value" id="statBest">0</span><span class="stat-label">longest streak</span></div>
+    <div class="stat"><span class="stat-value" id="statTotal">0</span><span class="stat-label">days logged</span></div>
+    <div class="stat"><span class="stat-value" id="statRate">0%</span><span class="stat-label">last 30 days</span></div>
+  </section>
+
+  <section class="heatmap-wrap">
+    <div class="month-labels" id="monthLabels"></div>
+    <div class="heatmap-body">
+      <div class="day-labels" id="dayLabels"></div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+    </div>
+    <div class="legend">
+      <span>Less</span>
+      <span class="legend-cell" data-level="0"></span>
+      <span class="legend-cell" data-level="1"></span>
+      <span class="legend-cell" data-level="2"></span>
+      <span class="legend-cell" data-level="3"></span>
+      <span class="legend-cell" data-level="4"></span>
+      <span>More</span>
+    </div>
+  </section>
+
+  <p class="hint">Click a day to cycle it through 5 levels. Everything is saved in your browser — nothing leaves your device.</p>
+
+</div>
+
+<!-- Add / edit habit modal -->
+<div id="habitModal" class="modal hidden">
+  <div class="modal-card">
+    <h2 id="modalTitle">New habit</h2>
+    <label class="field">
+      <span>Name</span>
+      <input id="habitNameInput" type="text" maxlength="40" placeholder="e.g. Read, Run, Practice guitar" />
+    </label>
+    <label class="field">
+      <span>Color</span>
+      <div class="color-options" id="colorOptions"></div>
+    </label>
+    <div class="modal-actions">
+      <button id="deleteHabitBtn" class="btn btn-danger hidden">Delete habit</button>
+      <div class="modal-actions-right">
+        <button id="cancelHabitBtn" class="btn btn-ghost">Cancel</button>
+        <button id="saveHabitBtn" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tooltip" class="tooltip hidden"></div>
+
+<canvas id="exportCanvas" class="hidden-canvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
