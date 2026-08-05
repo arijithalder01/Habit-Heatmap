@@ -3,7 +3,7 @@
 A GitHub-contributions-style heatmap for tracking any personal habit — reading, running, practicing an instrument, whatever you want to stay consistent with.
 
 No build step, no backend, no dependencies. Everything is plain HTML/CSS/JS and stored in `localStorage`, so your data never leaves your browser.
-Live demo: arijithalder01.github.io/Habit-Heatmap
+Live demo: https://arijithalder01.github.io/Habit-Heatmap
 
 ## Features
 
